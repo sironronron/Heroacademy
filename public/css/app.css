@@ -1,0 +1,33 @@
+.home-background {
+  background-image: url("https://img-a.udemycdn.com/notices/home_banner/image_udlite/57a73390-6b4d-45fd-9b04-c9e08b376c86.jpg?D3DrM6i55APVh8oSvvVI5sifjoQVU8b3bEivvoa1nxC5APXFW4x8Nnv2Qj6dJm9p3EgtEBHpGFCl9ohPtTk0hQPSsrzvsHIQzTd2xmlhfZms_YazhgYVat1o3yod2tqlEcs5224z48tptHwlavbl8WFyEGuJTG8gMrd1iWYaVVCLRebdBH04kA");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 420px;
+}
+
+.card {
+  margin-bottom: 30px;
+}
+
+.course-body {
+  padding: 15px !important;
+}
+
+.card-text {
+  height: 54.4px;
+  overflow: hidden;
+}
+
+.course-price {
+  margin-bottom: 0;
+}
+
+a .card {
+  color: #525F7F;
+}
+
+a .card:hover {
+  margin-top: -5px;
+  box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07) !important;
+}
+
