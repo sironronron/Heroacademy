@@ -84,12 +84,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Route::currentRouteName() === 'student.my_learnings.all_courses' ? 'active collapsed' : '' }} {{ Route::currentRouteName() === 'student.my_learnings.collections' ? 'active collapsed' : '' }} {{ Route::currentRouteName() === 'student.my_learnings.wishlist' ? 'active collapsed' : '' }}" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
+                    <a class="nav-link {{ Route::currentRouteName() === 'student.my_learnings.all_courses' ? 'active collapsed' : '' }} {{ Route::currentRouteName() === 'student.my_learnings.collections' ? 'active collapsed' : '' }} {{ Route::currentRouteName() === 'student.my_learnings.wishlist' ? 'active collapsed' : '' }} {{ Route::currentRouteName() === 'student.my_learnings.archived' ? 'active collapsed' : '' }}" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="navbar-examples">
                         <i class="ni ni-books text-warning"></i>
                         <span>My Learnings</span>
                     </a>
 
-                    <div class="collapse {{ Route::currentRouteName() === 'student.my_learnings.all_courses' ? 'show' : '' }} {{ Route::currentRouteName() === 'student.my_learnings.collections' ? 'show' : '' }} {{ Route::currentRouteName() === 'student.my_learnings.wishlist' ? 'show' : '' }}" id="navbar-examples" style="">
+                    <div class="collapse {{ Route::currentRouteName() === 'student.my_learnings.all_courses' ? 'show' : '' }} {{ Route::currentRouteName() === 'student.my_learnings.collections' ? 'show' : '' }} {{ Route::currentRouteName() === 'student.my_learnings.wishlist' ? 'show' : '' }} {{ Route::currentRouteName() === 'student.my_learnings.archived' ? 'show' : '' }}" id="navbar-examples" style="">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() === 'student.my_learnings.all_courses' ? 'active' : '' }}" href="{{ route('student.my_learnings.all_courses') }}">
@@ -107,14 +107,39 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a class="nav-link {{ Route::currentRouteName() === 'student.my_learnings.archived' ? 'active' : '' }}" href="{{ route('student.my_learnings.archived') }}">
                                     Archived
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('student.notifications') }}" class="nav-link {{ Route::currentRouteName() === 'student.notifications' ? 'active' : '' }}">
+                        <i class="ni ni-bell-55 text-info"></i> {{ __('Notifications') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('student.messages') }}" class="nav-link {{ Route::currentRouteName() === 'student.messages' ? 'active' : '' }}">
+                        <i class="ni ni-chat-round text-primary"></i> {{ __('Messages') }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('profile.edit') }}" class="nav-link {{ Route::currentRouteName() === 'profile.edit' ? 'active' : '' }}">
+                        <i class="ni ni-circle-08"></i> {{ __('Account Settings') }}
+                    </a>
+                </li>
             </ul>
+            <hr class="my-3">
+            <h6 class="navbar-heading text-muted">{{ __('Help and Support') }}</h6>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{{ route('support.create') }}" class="nav-link {{ Route::currentRouteName() === 'support.create' ? 'active' : '' }}">
+                        <i class="ni ni-support-16 text-success"></i>
+                        {{ __('Support Ticket') }}
+                    </a>
+                </li>
+            </ul>    
         </div>
     </div>
 </nav>

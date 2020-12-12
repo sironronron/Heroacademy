@@ -18097,7 +18097,7 @@ textarea[resize='horizontal']
     top: 2px;
     right: 15px;
 
-    display: inline-block;
+    display: none;
 
     width: 19px;
     height: 19px;

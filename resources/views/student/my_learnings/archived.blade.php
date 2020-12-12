@@ -4,8 +4,8 @@
 
 @section('content')
     @include('users.partials.header', [
-        'title' => __('Wishlist'),
-        'description' => __('You will be notified if a course on your wishlist is on sale!'),
+        'title' => __('Archived'),
+        'description' => __('Archive all the important courses that you have!'),
         'class' => 'col-lg-10'
     ])
 

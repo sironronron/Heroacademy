@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileRequest;
-use App\Http\Requests\PasswordRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -24,31 +24,46 @@ class ProfileController extends Controller
      * @param  \App\Http\Requests\ProfileRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ProfileRequest $request)
+    public function update(Request $request)
     {
-        if (auth()->user()->id == 1) {
-            return back()->withErrors(['not_allow_profile' => __('You are not allowed to change data for a default user.')]);
+        $this->validate($request, [
+            'name' => 'required|min:3|max:50',
+            'email' => 'required|min:8|max:50',
+        ]);
+
+        $user = Auth::user();
+
+        try {
+            $user->name = $request->name;
+            $user->email = $request->email;
+
+            $user->update();
+        } catch (Exception $e) {
+            return back()->withError(__('Something went wrong! Please try again.'));
         }
 
-        auth()->user()->update($request->all());
-
-        return back()->withStatus(__('Profile successfully updated.'));
+        return back()->withSuccess(__('Account Settings successfully updated.'));
     }
 
     /**
      * Change the password
      *
-     * @param  \App\Http\Requests\PasswordRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function password(PasswordRequest $request)
+    public function password(Request $request)
     {
-        if (auth()->user()->id == 1) {
-            return back()->withErrors(['not_allow_password' => __('You are not allowed to change the password for a default user.')]);
-        }
+        $this->validate($request, [
+            'old_password' => 'required|min:6',
+            'password' => 'required|min:6|confirmed|different:old_password',
+            'password_confirmation' => 'required|min:6'
+        ]);
 
-        auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('Password successfully updated.'));
+        $user = Auth::user();
+
+        $user->password = Hash::make($request->password);
+
+        return back()->withSuccess(__('Password successfully updated.'));
     }
 }

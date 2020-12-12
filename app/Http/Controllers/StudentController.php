@@ -34,4 +34,28 @@ class StudentController extends Controller
     {
         return view('student.my_learnings.wishlist');
     }
+
+    /**
+     * Student Archive Course List
+     */
+    public function archive()
+    {
+        return view('student.my_learnings.archived');
+    }
+
+    /**
+     * Student Notifications List
+     */
+    public function notifications()
+    {
+        return view('student.notifications');
+    }
+
+    /**
+     * Student Messages
+     */
+    public function messages()
+    {
+        return view('student.messages');
+    }
 }
